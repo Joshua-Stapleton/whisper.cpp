@@ -76,7 +76,7 @@ struct whisper_params {
     bool tinydiarize     = false;
     bool split_on_word   = false;
     bool no_fallback     = false;
-    bool output_txt      = false;
+    bool output_txt      = true;
     bool output_vtt      = false;
     bool output_srt      = false;
     bool output_wts      = false;
@@ -86,7 +86,7 @@ struct whisper_params {
     bool print_special   = false;
     bool print_colors    = false;
     bool print_progress  = false;
-    bool no_timestamps   = false;
+    bool no_timestamps   = true;
 
     std::string language  = "en";
     std::string prompt;
