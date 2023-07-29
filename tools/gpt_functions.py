@@ -52,12 +52,13 @@ async def generate_gpt4_response_async(prompt:str, task_num:int) -> str:
     request_header = {"Authorization": f"Bearer {OPENAI_KEY}"}
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.post(url=api_endpoint, headers=request_header, json=messages) as response:
+            async with session.post(url=api_endpoint, headers=request_header, json=messages) as response: # this is the same as .get in a way.
                 response = await response.json()
                 print("FINISHED TASK NUM", task_num, ". RESPONSE:", response['choices'][0]['message']['content'])
                 response = response['choices'][0]['message']['content']
-                asyncio.create_task(send_email_async(os.environ.get('SENDING_EMAIL_ADDRESS'), 'joshua.stapleton.ai@gmail.com', "FRED response for task " + str(task_num), response + "\n\n-----------------------\n\nTRANSCRIPT:\n", os.environ.get('EMAIL_PASSWORD')))
                 return response
 
     except Exception as e:
         print(f"Request {task_num} failed with Exception {e}")
+
+
