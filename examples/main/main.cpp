@@ -9,6 +9,7 @@
 #include <thread>
 #include <vector>
 #include <cstring>
+#include <iostream>
 
 #if defined(_MSC_VER)
 #pragma warning(disable: 4244 4267) // possible loss of data

@@ -22,6 +22,10 @@ REPLACEMENTS = {
     '\u00AE': '(r)',  # Registered sign
     '\u2122': '(tm)',  # Trade mark sign
     '\u00B0': ' degrees ',  # Degree sign
+    '\xb0': ' degrees ',  # Degree sign in hexadecimal
+    '\u00A2': ' cents ',  # Cent sign
+    '\u2030': ' permille ',  # Per mille sign
+    '\u2044': ' slash ',  # Fraction slash
 }
 
 def replace_disallowed_characters(message):

@@ -3,9 +3,6 @@ from dotenv import load_dotenv
 import os
 import aiohttp
 import re
-import asyncio
-import json
-from tools.notification_functions import send_email, send_email_async
 load_dotenv()
 OPENAI_KEY = os.environ.get('OPEN_AI_KEY')
 
@@ -54,7 +51,6 @@ async def generate_gpt4_response_async(prompt:str, task_num:int) -> str:
         async with aiohttp.ClientSession() as session:
             async with session.post(url=api_endpoint, headers=request_header, json=messages) as response: # this is the same as .get in a way.
                 response = await response.json()
-                print("FINISHED TASK NUM", task_num, ". RESPONSE:", response['choices'][0]['message']['content'])
                 response = response['choices'][0]['message']['content']
                 return response
 
