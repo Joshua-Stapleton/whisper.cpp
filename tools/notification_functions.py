@@ -67,7 +67,7 @@ async def send_email_async(sender, recipient, subject, message, password):
     try:
         message = f'Subject: {subject}\n\n{message}'
         await aiosmtplib.send(
-            remove_duplicates_from_string(replace_disallowed_characters(message)),
+            remove_duplicates_and_brackets_from_string(replace_disallowed_characters(message)),
             sender=sender,
             recipients=[recipient],
             hostname="smtp.gmail.com",
