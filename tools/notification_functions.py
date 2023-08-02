@@ -64,8 +64,18 @@ def send_email(sender, recipient, subject, message, password):
 
 
 async def send_email_async(sender, recipient, subject, message, password):
+    
     try:
+        # ensure there is no 'Subject' in the message body
+        message = message.replace('Subject:', '')
+        
+        # ensure there is no 'Subject' in the subject
+        subject = subject.replace('Subject:', '').strip()
+        
+        # only include the filename not the extensions
+        subject = subject.split('.')[0]
         message = f'Subject: {subject}\n\n{message}'
+
         await aiosmtplib.send(
             remove_duplicates_and_brackets_from_string(replace_disallowed_characters(message)),
             sender=sender,
