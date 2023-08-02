@@ -1,6 +1,6 @@
-import subprocess
 import smtplib
 import aiosmtplib
+import re
 
 REPLACEMENTS = {
     '\u2019': "'",  # Right single quotation mark
@@ -34,6 +34,21 @@ def replace_disallowed_characters(message):
     return message
 
 
+def remove_duplicates_and_brackets_from_string(message):
+    lines = message.split('\n')
+        
+    lines_dict = {}
+    for line in lines:
+        lines_dict[line] = lines_dict.get(line, 0) + 1
+
+    result = ""
+    for line, count in lines_dict.items():
+        if count <= 3 and not re.match(r'\s*\[.*\]\s*|\s*\(.*\)\s*', line):
+            result += line + '\n'
+            
+    return result.strip()
+
+
 def send_email(sender, recipient, subject, message, password):
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -52,7 +67,7 @@ async def send_email_async(sender, recipient, subject, message, password):
     try:
         message = f'Subject: {subject}\n\n{message}'
         await aiosmtplib.send(
-            message,
+            remove_duplicates_from_string(replace_disallowed_characters(message)),
             sender=sender,
             recipients=[recipient],
             hostname="smtp.gmail.com",
