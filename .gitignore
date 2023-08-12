@@ -46,6 +46,13 @@ bindings/java/.idea/
 .idea/
 
 client_secret_782650429580-k51cnfcs0gmn6kdkn7t5elbchinpspo1.apps.googleusercontent.com.json
-audios_*
+# audios_*
+audios_scha
+audios_mike
+audios_loren
+audios_bart
+audios_dad
+audios_mom
+audios_clint
 .env
 venv

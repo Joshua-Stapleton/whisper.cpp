@@ -5,11 +5,48 @@ import pickle
 from datetime import datetime
 from googleapiclient.errors import HttpError
 import os
+import boto3
+from botocore.exceptions import ClientError
 from googleapiclient.discovery import build
 from tools.fred_tools import FOLDER_NAME_TO_FOLDER_ID, download_file, whisper_and_fred
 
 # If modifying these SCOPES, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+
+
+
+# Use this code snippet in your app.
+# If you need more information about configurations
+# or implementing the sample code, visit the AWS docs:
+# https://aws.amazon.com/developer/language/python/
+
+
+def get_secret():
+    secret_name = "client_secret_782650429580-k51cnfcs0gmn6kdkn7t5elbchinpspo1.apps.googleusercontent.com.json"
+    region_name = "us-east-1"
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+
+    try:
+        get_secret_value_response = client.get_secret_value(
+            SecretId=secret_name
+        )
+    except ClientError as e:
+        # For a list of exceptions thrown, see
+        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+        raise e
+
+    # Decrypts secret using the associated KMS key.
+    secret = get_secret_value_response['SecretString']
+
+    # Your code goes here.
+
+
 
 async def main():
     try:
@@ -28,7 +65,8 @@ async def main():
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file('client_secret_782650429580-k51cnfcs0gmn6kdkn7t5elbchinpspo1.apps.googleusercontent.com.json', SCOPES)
+                client_secret_content = get_secret('client_secret_782650429580-k51cnfcs0gmn6kdkn7t5elbchinpspo1.apps.googleusercontent.com.json')
+                flow = InstalledAppFlow.from_client_secrets_file(client_secret_content, SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
             with open('token.pickle', 'wb') as token:

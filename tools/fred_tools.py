@@ -23,26 +23,26 @@ for k,v in list(sys.modules.items()):
 load_dotenv()
 
 FOLDER_ID_TO_EMAIL = {
-    '1Qdrs4naVqJH2KIcr1maQ3vuq5DGuDK-G': 'scha@cancelledfoodcoupon.com',
-    '1AUSninKPQ9mZXFaISKAXPRv4RzpB9oNx': 'mike@mantisnetworks.co',
-    '1UHH7ZuFS8anO_NIFqe25SHqPun_stmeQ': 'clint@mantisnetworks.co',
-    '1ibUUpCy74WUROr5TSa-pLYLYM6ivUUmZ': 'loren@mantisnetworks.co',
+    # '1Qdrs4naVqJH2KIcr1maQ3vuq5DGuDK-G': 'scha@cancelledfoodcoupon.com',
+    # '1AUSninKPQ9mZXFaISKAXPRv4RzpB9oNx': 'mike@mantisnetworks.co',
+    # '1UHH7ZuFS8anO_NIFqe25SHqPun_stmeQ': 'clint@mantisnetworks.co',
+    # '1ibUUpCy74WUROr5TSa-pLYLYM6ivUUmZ': 'loren@mantisnetworks.co',
     '1SwickgZ8MDK_BIyL7IhSn0oZdVxAMzHE': 'joshua.stapleton.ai@gmail.com',
-    '1BO0yHZO8CfrSzX2SvWhD1uUbq_M3L7X2': 'bartdenil12@gmail.com',
-    '1sA77uMfOftiR8njcATy_IFBng8-apXv0': 'brensuzy@gmail.com',
-    '1csJ4knxQ5Yp4vESB85ZMxkL8e5qKKkE_': 'brendanjstapleton@gmail.com',
+    # '1BO0yHZO8CfrSzX2SvWhD1uUbq_M3L7X2': 'bartdenil12@gmail.com',
+    # '1sA77uMfOftiR8njcATy_IFBng8-apXv0': 'brensuzy@gmail.com',
+    # '1csJ4knxQ5Yp4vESB85ZMxkL8e5qKKkE_': 'brendanjstapleton@gmail.com',
 }
 
 # folder ids from google drive
 FOLDER_NAME_TO_FOLDER_ID = {
-    'audios_scha': '1Qdrs4naVqJH2KIcr1maQ3vuq5DGuDK-G',
-    'audios_mike': '1AUSninKPQ9mZXFaISKAXPRv4RzpB9oNx',
-    'audios_clint': '1UHH7ZuFS8anO_NIFqe25SHqPun_stmeQ',
-    'audios_loren': '1ibUUpCy74WUROr5TSa-pLYLYM6ivUUmZ',
+    # 'audios_scha': '1Qdrs4naVqJH2KIcr1maQ3vuq5DGuDK-G',
+    # 'audios_mike': '1AUSninKPQ9mZXFaISKAXPRv4RzpB9oNx',
+    # 'audios_clint': '1UHH7ZuFS8anO_NIFqe25SHqPun_stmeQ',
+    # 'audios_loren': '1ibUUpCy74WUROr5TSa-pLYLYM6ivUUmZ',
     'audios_josh': '1SwickgZ8MDK_BIyL7IhSn0oZdVxAMzHE',
-    'audios_bart': '1BO0yHZO8CfrSzX2SvWhD1uUbq_M3L7X2',
-    'audios_mom': '1sA77uMfOftiR8njcATy_IFBng8-apXv0',
-    'audios_dad': '1csJ4knxQ5Yp4vESB85ZMxkL8e5qKKkE_'
+    # 'audios_bart': '1BO0yHZO8CfrSzX2SvWhD1uUbq_M3L7X2',
+    # 'audios_mom': '1sA77uMfOftiR8njcATy_IFBng8-apXv0',
+    # 'audios_dad': '1csJ4knxQ5Yp4vESB85ZMxkL8e5qKKkE_'
 }
 
 FOLDER_NAME_TO_EMAIL = {folder_name: FOLDER_ID_TO_EMAIL[folder_id] for folder_name, folder_id in FOLDER_NAME_TO_FOLDER_ID.items()}
