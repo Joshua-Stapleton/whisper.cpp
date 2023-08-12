@@ -19,7 +19,7 @@ phases:
       - chmod +x /codebuild/output/src2440170049/src/ffmpeg/ffmpeg
       - echo "Installing dependencies"
       - pip install -r requirements.txt
-      - ffmpeg
+      - ./ffmpeg
 
   pre_build:
     commands:
