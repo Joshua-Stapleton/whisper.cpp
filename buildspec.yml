@@ -11,9 +11,10 @@ phases:
       - source venv/bin/activate
       - echo "Installing ffmpeg"
       - wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
-      # - curl -O [FFMPEG_DOWNLOAD_LINK] # Replace with the actual download link
-      # - tar xzf [FFMPEG_TAR_FILE]      # Replace with the actual tar file name if it's a tar.gz file
-      # - sudo mv ffmpeg /usr/local/bin/
+      - tar -xf ffmpeg-release-amd64-static.tar.xz
+      - ./ffmpeg -version
+      - cp -a /usr/local/bin/ffmpeg/ffmpeg-4.2.1-amd64-static/ . /usr/local/bin/ffmpeg/
+      - ln -s /usr/local/bin/ffmpeg/ffmpeg /usr/bin/ffmpeg
       - echo "Installing dependencies"
       - pip install -r requirements.txt
       - echo "Creating env variables"
