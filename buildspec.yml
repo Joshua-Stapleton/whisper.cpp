@@ -17,9 +17,10 @@ phases:
       - mkdir -p /codebuild/output/src2440170049/src/ffmpeg
       - mv $EXTRACTED_DIR/ffmpeg /codebuild/output/src2440170049/src/ffmpeg/
       - chmod +x /codebuild/output/src2440170049/src/ffmpeg/ffmpeg
+      - ln -s /codebuild/output/src2440170049/src/ffmpeg/ffmpeg /codebuild/output/src2440170049/src/ffmpeg
       - echo "Installing dependencies"
-      - pip install -r requirements.txt
-      - ./ffmpeg
+      # - pip install -r requirements.txt
+      - ffmpeg
 
   pre_build:
     commands:
