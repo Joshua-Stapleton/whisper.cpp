@@ -11,8 +11,9 @@ phases:
       - source venv/bin/activate
       - echo "Installing dependencies"
       - pip install -r requirements.txt
+      - echo "Creating env variables"
+      - echo "OPEN_AI_KEY=$OPEN_AI_KEY" > .env
       - echo "Running Fred..."
-      - pwd
       - venv/bin/python fred.py
 
   pre_build:
