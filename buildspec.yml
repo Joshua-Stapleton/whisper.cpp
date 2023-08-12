@@ -12,7 +12,8 @@ phases:
       - echo "Installing ffmpeg"
       - wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
       - tar -xf ffmpeg-release-amd64-static.tar.xz
-      - cp -a /codebuild/output/src2440170049/src/ffmpeg/ffmpeg-4.2.1-amd64-static/ . /codebuild/output/src2440170049/src/ffmpeg/
+      - ls
+      - cp -a /codebuild/output/src2440170049/src/ffmpeg/ffmpeg-release-amd64-static/ . /codebuild/output/src2440170049/src/ffmpeg/
       - ln -s /codebuild/output/src2440170049/src/ffmpeg/ffmpeg /codebuild/output/src2440170049/src/ffmpeg
       - echo "Installing dependencies"
       - pip install -r requirements.txt
