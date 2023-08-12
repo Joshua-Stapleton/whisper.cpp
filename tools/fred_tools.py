@@ -9,6 +9,7 @@ import traceback
 import asyncio
 import os.path
 import io
+import boto3
 from googleapiclient.http import MediaIoBaseDownload
 from googleapiclient.errors import HttpError
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
@@ -21,6 +22,13 @@ for k,v in list(sys.modules.items()):
 
 # Load the environment variables from the .env file
 load_dotenv()
+
+# secrets_client = boto3.client('secretsmanager')
+# response = secrets_client.get_secret_value(SecretId='YOUR_SECRET_NAME_OR_ARN')
+
+# # If it's a string payload (i.e., one key-value pair)
+# MY_SECRET_VALUE = response['SecretString']
+
 
 FOLDER_ID_TO_EMAIL = {
     # '1Qdrs4naVqJH2KIcr1maQ3vuq5DGuDK-G': 'scha@cancelledfoodcoupon.com',

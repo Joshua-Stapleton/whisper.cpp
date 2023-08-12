@@ -11,6 +11,7 @@ phases:
       - source venv/bin/activate
       - echo "Installing ffmpeg"
       - yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm || echo "EPEL repo might be already setup."
+      - amazon-linux-extras install epel -y
       - yum install -y ffmpeg
       - echo "Installing dependencies"
       - pip install -r requirements.txt
