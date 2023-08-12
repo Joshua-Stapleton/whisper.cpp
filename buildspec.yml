@@ -12,15 +12,13 @@ phases:
       - echo "Installing ffmpeg"
       - wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
       - tar -xf ffmpeg-release-amd64-static.tar.xz
-      - ls
-      - cp -a /codebuild/output/src2440170049/src/ffmpeg/ffmpeg-release-amd64-static/ . /codebuild/output/src2440170049/src/ffmpeg/
-      - ln -s /codebuild/output/src2440170049/src/ffmpeg/ffmpeg /codebuild/output/src2440170049/src/ffmpeg
+      - ls # Check the extracted directory name
+      - EXTRACTED_DIR=$(ls | grep 'ffmpeg-') # Assuming the extracted directory starts with 'ffmpeg-'
+      - echo "Extracted FFmpeg directory: $EXTRACTED_DIR"
+      - mv $EXTRACTED_DIR/ffmpeg /codebuild/output/src2440170049/src/ffmpeg/ # Move the ffmpeg binary to the desired location
+      - chmod +x /codebuild/output/src2440170049/src/ffmpeg/ffmpeg # Make sure the ffmpeg binary is executable
       - echo "Installing dependencies"
       - pip install -r requirements.txt
-      - echo "Creating env variables"
-      - echo "OPEN_AI_KEY=$OPEN_AI_KEY" > .env
-      - echo "Running Fred..."
-      - venv/bin/python fred.py
 
   pre_build:
     commands:
