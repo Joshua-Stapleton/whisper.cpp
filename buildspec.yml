@@ -10,6 +10,8 @@ phases:
       - echo "Activating venv"
       - source venv/bin/activate
       - echo "Installing dependencies"
+      - sudo amazon-linux-extras enable epel
+      - sudo yum -y install ffmpeg
       - pip install -r requirements.txt
       - echo "Creating env variables"
       - echo "OPEN_AI_KEY=$OPEN_AI_KEY" > .env
