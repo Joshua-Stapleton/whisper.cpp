@@ -13,10 +13,10 @@ phases:
       - wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
       - tar -xf ffmpeg-release-amd64-static.tar.xz
       - ls # Check the extracted directory name
-      - "EXTRACTED_DIR=$(ls | grep 'ffmpeg-') && echo 'Extracted FFmpeg directory:' $EXTRACTED_DIR"
+      - "EXTRACTED_DIR=$(find . -maxdepth 1 -type d | grep 'ffmpeg-') && echo 'Extracted FFmpeg directory:' $EXTRACTED_DIR"
       - mkdir -p /codebuild/output/src2440170049/src/ffmpeg
-      - mv $EXTRACTED_DIR/ffmpeg /codebuild/output/src2440170049/src/ffmpeg/ # Move the ffmpeg binary to the desired location
-      - chmod +x /codebuild/output/src2440170049/src/ffmpeg/ffmpeg # Make sure the ffmpeg binary is executable
+      - mv $EXTRACTED_DIR/ffmpeg /codebuild/output/src2440170049/src/ffmpeg/
+      - chmod +x /codebuild/output/src2440170049/src/ffmpeg/ffmpeg
       - echo "Installing dependencies"
       - pip install -r requirements.txt
 
