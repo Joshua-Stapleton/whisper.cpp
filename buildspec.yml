@@ -12,7 +12,7 @@ phases:
       - echo "Installing ffmpeg"
       - uname -m
       - wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz # https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
-      - tar -xf ffmpeg-release-amd64-static.tar.xz
+      - tar -xf ffmpeg-release-arm64-static.tar.xz
       - ls # Check the extracted directory name
       - "EXTRACTED_DIR=$(find . -maxdepth 1 -type d | grep 'ffmpeg-') && echo 'Extracted FFmpeg directory:' $EXTRACTED_DIR"
       - mkdir -p /codebuild/output/src2440170049/src/ffmpeg
