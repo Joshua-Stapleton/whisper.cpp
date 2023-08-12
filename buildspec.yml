@@ -5,8 +5,15 @@ phases:
     runtime-versions:
       python: 3.8
     commands:
-      - echo "Installing dependencies..."
+      - echo "Creating venv"
+      - python3 -m venv venv
+      - echo "Activating venv"
+      - source venv/bin/activate
+      - echo "Installing dependencies"
       - pip install -r requirements.txt
+      - echo "Running Fred..."
+      - pwd
+      - venv/bin/python fred.py
 
   pre_build:
     commands:
