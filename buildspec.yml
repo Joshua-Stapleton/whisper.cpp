@@ -20,7 +20,7 @@ phases:
       - ln -s /codebuild/output/src2440170049/src/ffmpeg/ffmpeg /usr/bin/ffmpeg
       # - echo "Installing dependencies"
       # - pip install -r requirements.txt
-      - which ffmpeg
+      - ffmpeg
 
   pre_build:
     commands:
