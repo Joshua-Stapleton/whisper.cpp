@@ -14,6 +14,7 @@ phases:
       - tar -xf ffmpeg-release-amd64-static.tar.xz
       - ls # Check the extracted directory name
       - "EXTRACTED_DIR=$(ls | grep 'ffmpeg-') && echo 'Extracted FFmpeg directory:' $EXTRACTED_DIR"
+      - mkdir -p /codebuild/output/src2440170049/src/ffmpeg
       - mv $EXTRACTED_DIR/ffmpeg /codebuild/output/src2440170049/src/ffmpeg/ # Move the ffmpeg binary to the desired location
       - chmod +x /codebuild/output/src2440170049/src/ffmpeg/ffmpeg # Make sure the ffmpeg binary is executable
       - echo "Installing dependencies"
