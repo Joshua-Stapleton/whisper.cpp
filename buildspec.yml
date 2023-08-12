@@ -12,7 +12,6 @@ phases:
       - echo "Installing ffmpeg"
       - wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
       - tar -xf ffmpeg-release-amd64-static.tar.xz
-      - ./ffmpeg -version
       - cp -a /usr/local/bin/ffmpeg/ffmpeg-4.2.1-amd64-static/ . /usr/local/bin/ffmpeg/
       - ln -s /usr/local/bin/ffmpeg/ffmpeg /usr/bin/ffmpeg
       - echo "Installing dependencies"
