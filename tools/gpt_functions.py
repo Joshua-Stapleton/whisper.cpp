@@ -5,7 +5,7 @@ import aiohttp
 import re
 load_dotenv()
 OPENAI_KEY = os.environ.get('OPEN_AI_KEY')
-FRED_PROMPT = 'You are Fred. A helpful assistant. Your job is to respond to user queries and follow instructions.'
+FRED_PROMPT = 'You are a helpful assistant. Your job is to respond to user queries and follow instructions.'
 
 
 def api_endpoint_from_url(request_url):
@@ -42,10 +42,11 @@ def generate_gpt4_response(prompt:str) -> str:
     return response['choices'][0]['message']['content']
 
 
-async def generate_gpt4_response_async(prompt:str, task_num:int) -> str:
-    print("Generating GPT-4 response...")
+async def generate_gpt4_response_async(prompt:str) -> str:
+    print("Generating GPT-4 response without system prompt...")
     openai.api_key = OPENAI_KEY
-    messages = [{'role': 'system', 'content': FRED_PROMPT}, {'role': 'user', 'content': prompt}]
+    # messages = [{'role': 'system', 'content': FRED_PROMPT}, {'role': 'user', 'content': prompt}]
+    messages = [{'role': 'user', 'content': prompt}]
     messages = {'model': 'gpt-4', 'messages': messages, 'temperature': 0.8}
     api_endpoint = "https://api.openai.com/v1/chat/completions"
     request_header = {"Authorization": f"Bearer {OPENAI_KEY}"}
@@ -57,6 +58,6 @@ async def generate_gpt4_response_async(prompt:str, task_num:int) -> str:
                 return response
 
     except Exception as e:
-        print(f"Request {task_num} failed with Exception {e}")
+        print(f"Request failed with Exception {e}")
 
 

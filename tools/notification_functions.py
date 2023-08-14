@@ -64,8 +64,7 @@ def send_email(sender, recipient, subject, message, password):
         print("Failed to send email: {}".format(e))
 
 
-async def send_email_async(sender, recipient, subject, message, password):
-    
+async def send_email_async(sender, recipient, subject, message, password): # When GPT-4 generates emails, it sometimes also generates headers. The email function detects headers.
     try:
         # ensure there is no 'Subject' in the message body
         message = message.replace('Subject:', '')
