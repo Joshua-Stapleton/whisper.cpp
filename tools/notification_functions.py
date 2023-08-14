@@ -8,6 +8,7 @@ REPLACEMENTS = {
     '\u201C': '"',  # Left double quotation mark
     '\u201D': '"',  # Right double quotation mark
     '\u2026': '...',  # Horizontal ellipsis
+    '\u2013': '-',
     '\xe4': 'a',  # Latin small letter a with diaeresis
     '\xc4': 'A',  # Latin capital letter A with diaeresis
     '\xf6': 'o',  # Latin small letter o with diaeresis

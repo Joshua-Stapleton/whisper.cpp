@@ -5,6 +5,7 @@ import aiohttp
 import re
 load_dotenv()
 OPENAI_KEY = os.environ.get('OPEN_AI_KEY')
+FRED_PROMPT = 'You are Fred. A helpful assistant. Your job is to respond to user queries and follow instructions.'
 
 
 def api_endpoint_from_url(request_url):
@@ -42,15 +43,15 @@ def generate_gpt4_response(prompt:str) -> str:
 
 
 async def generate_gpt4_response_async(prompt:str, task_num:int) -> str:
-    print("Generating GPT-4 response for task #", task_num, "...")
+    print("Generating GPT-4 response...")
     openai.api_key = OPENAI_KEY
-    messages = [{'role': 'system', 'content': 'You are Fred. A helpful chatbot assistant. Your job is to respond to user queries and follow instructions; do not make up any information outside of what the user has said.'}, {'role': 'user', 'content': prompt}]
+    messages = [{'role': 'system', 'content': FRED_PROMPT}, {'role': 'user', 'content': prompt}]
     messages = {'model': 'gpt-4', 'messages': messages, 'temperature': 0.8}
     api_endpoint = "https://api.openai.com/v1/chat/completions"
     request_header = {"Authorization": f"Bearer {OPENAI_KEY}"}
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.post(url=api_endpoint, headers=request_header, json=messages) as response: # this is the same as .get in a way.
+            async with session.post(url=api_endpoint, headers=request_header, json=messages) as response:
                 response = await response.json()
                 response = response['choices'][0]['message']['content']
                 return response

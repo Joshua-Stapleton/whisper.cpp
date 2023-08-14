@@ -25,7 +25,7 @@ phases:
   pre_build:
     commands:
       - echo "Pre-build steps..."
-
+xs
   build:
     commands:
       - echo "Building the project..."
